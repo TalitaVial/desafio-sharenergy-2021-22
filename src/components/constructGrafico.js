@@ -1,28 +1,32 @@
-import React from 'react';
+import React from 'react'
 
-import data from '../data/dadosUsina.json'
+import { dadosUsina } from '../data/dadosUsina.json'
 
 import {
-    LineChart, Line, XAxis, YAxis, CartesianGrid,
-    Tooltip, Legend, ResponsiveContainer,
-} from 'recharts';
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer
+} from 'recharts'
 
-
-const ConstructGrafico = () => {
- 
-    return(
-      <ResponsiveContainer height={300} width="70%">
-        <LineChart data={data.dadosUsina} margin={{top: 75, right:30, left: 50, bottom: 6}}>
-          <XAxis dataKey="tempo_h"/>
-          <YAxis />
-          <CartesianGrid strokeDasharray="5 5"/>
-          <Tooltip />
-          <Legend verticalAling="top" height={300}/>
-          <Line name="Corrente" type="monotone" dataKey="corrente_A" stroke="#82ca9d"/>
-        </LineChart>
-      </ResponsiveContainer>
-    );
-  
-};
-
-export default ConstructGrafico;
+export default function ConstructGrafico({ dados }) {
+  return (
+    <ResponsiveContainer height={300} width="70%">
+      <LineChart
+        data={dadosUsina}
+        margin={{ top: 75, right: 30, left: 50, bottom: 6 }}
+      >
+        <XAxis dataKey="tempo_h" />
+        <YAxis />
+        <CartesianGrid strokeDasharray="5 5" />
+        <Tooltip />
+        <Legend verticalAling="top" height={300} />
+        <Line name={dados} type="monotone" dataKey={dados} stroke="#82ca9d" />
+      </LineChart>
+    </ResponsiveContainer>
+  )
+}

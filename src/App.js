@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react'
 
-import ConstructGrafico from './components/constructGrafico';
-import SelectDadosUsina from './components/SelectDadosUsina';
+import ConstructGrafico from './components/constructGrafico'
+import CreateTableData from './components/createTableData'
+import SelectDadosUsina from './components/SelectDadosUsina'
 
 const App = () => {
+  const [dados, setDados] = useState()
+  function onChange(value) {
+    setDados(value)
+  }
+
   return (
     <>
-      <SelectDadosUsina />
-      <ConstructGrafico />
+      <SelectDadosUsina onChange={onChange} />
+      <ConstructGrafico dados={dados} />
+      <CreateTableData />
     </>
   )
 }
 
-export default App;
+export default App
