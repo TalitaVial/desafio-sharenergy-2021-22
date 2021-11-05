@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { dadosClientes } from '../data/dadosClientes.json'
 
 import {
@@ -10,7 +9,13 @@ import {
   TableRow,
   TableBody
 } from '@material-ui/core'
+
+import ModalEditCliente from './modalEditCliente'
 import { Paper } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
+import Stack from '@material-ui/core/Stack'
+import DeleteIcon from '@material-ui/icons/Delete'
+import AddBox from '@material-ui/icons/AddBox'
 
 export default function CreateTableData() {
   return (
@@ -43,10 +48,27 @@ export default function CreateTableData() {
                     </TableRow>
                   ))}
                 </TableCell>
+                <ModalEditCliente cliente={cliente} usina={cliente.usinas} />
+                <Stack direction="row" spacing={2}>
+                  <Button
+                    variant="outlined"
+                    startIcon={<DeleteIcon />}
+                  ></Button>
+                </Stack>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+        <Stack>
+          <Button
+            sx={{ width: 150 }}
+            direction="row"
+            variant="outlined"
+            startIcon={<AddBox />}
+          >
+            Adicionar
+          </Button>
+        </Stack>
       </TableContainer>
     </>
   )

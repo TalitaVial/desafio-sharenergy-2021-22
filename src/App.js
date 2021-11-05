@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 
 import ConstructGrafico from './components/constructGrafico'
-import CreateTableData from './components/createTableData'
 import SelectDadosUsina from './components/SelectDadosUsina'
+import { Button } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 
-const App = () => {
+export default function App() {
+  const history = useHistory()
+
   const [dados, setDados] = useState()
   function onChange(value) {
     setDados(value)
@@ -14,9 +17,14 @@ const App = () => {
     <>
       <SelectDadosUsina onChange={onChange} />
       <ConstructGrafico dados={dados} />
-      <CreateTableData />
+      <Button
+        variant="outlined"
+        onClick={() => {
+          history.push('./tabela')
+        }}
+      >
+        Tabela
+      </Button>
     </>
   )
 }
-
-export default App
